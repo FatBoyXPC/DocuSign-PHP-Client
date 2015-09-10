@@ -1,5 +1,5 @@
 {
-    "name": "larrykluger/docusign-lib",
+    "name": "docusign/DocuSign-PHP-Client",
     "description": "DocuSign eSign PHP Client Library",
     "authors": [
         {
