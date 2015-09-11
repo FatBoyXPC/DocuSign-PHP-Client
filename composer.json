@@ -7,8 +7,6 @@
         }
     ],
     "autoload": {
-        "files": [
-            "src/DocuSign_Client.php"
-        ]
+        "psr-4": "src/"
     }
 }
