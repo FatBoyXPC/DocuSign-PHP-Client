@@ -151,9 +151,5 @@ class DocuSign_Client {
 	}
 }
 
-// Exceptions that the DocuSign PHP API Library can throw
-class DocuSign_Exception extends Exception {}
-class DocuSign_AuthException extends DocuSign_Exception {}
-class DocuSign_IOException extends DocuSign_Exception {}
 
 ?>
