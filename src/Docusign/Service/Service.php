@@ -15,7 +15,9 @@
  * limitations under the License.
  */
 
-abstract class DocuSign_Service {
+namespace Docusign\Service;
+
+abstract class Service {
 
 	protected $client;
 	protected $curl;

@@ -15,7 +15,9 @@
  * limitations under the License.
  */
 
-abstract class DocuSign_Resource { 
+namespace Docusign\Resource;
+
+abstract class Resource { 
 
 	protected $service;
 	protected $client;
