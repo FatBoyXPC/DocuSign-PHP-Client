@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+namespace Docusign\Service;
+
 require_once 'DocuSign_Service.php';
 require_once 'DocuSign_Resource.php';
 

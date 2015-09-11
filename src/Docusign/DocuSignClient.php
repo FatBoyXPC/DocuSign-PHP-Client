@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+namespace Docusign;
+
 if (! function_exists('json_decode')) {
   throw new Exception('DocuSign PHP API Client requires the JSON PHP extension');
 }
