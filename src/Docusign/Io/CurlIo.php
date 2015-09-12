@@ -17,7 +17,8 @@
 
 namespace Docusign\Io;
 
-require_once 'DocuSign_IO.php';
+use Docusign\Io\Io;
+use Docusign\Exception\IoException;
 
 class CurlIo extends Io {
 
@@ -58,20 +59,20 @@ class CurlIo extends Io {
 		try {
 			$result = curl_exec($curl);
 			if( curl_error($curl) != '' ) {
-				throw new DocuSign_IOException(curl_error($curl));
+				throw new IoException(curl_error($curl));
 			}
 			$jsonResult = json_decode($result);
 			$response = (!is_null($jsonResult)) ? $jsonResult : $result;
 		} catch(Exception $e) {
-			throw new DocuSign_IOException($e);
+			throw new IoException($e);
 		}
 		
 		curl_close($curl);
 
 		if (is_array($response) && array_key_exists('errorCode', $response)) {
-			throw new DocuSign_IOException($response['errorCode'] . ': ' . $response['message']);
+			throw new IoException($response['errorCode'] . ': ' . $response['message']);
 		} elseif (get_class($response) === 'stdClass' && property_exists($response, 'errorCode')) {
-			throw new DocuSign_IOException($response->errorCode . ': ' . $response->message);
+			throw new IoException($response->errorCode . ': ' . $response->message);
 		}
 
 		return $response;

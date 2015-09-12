@@ -17,12 +17,14 @@
 
 namespace Docusign\Service;
 
+use Docusign\DocuSignClient;
+
 abstract class Service {
 
 	protected $client;
 	protected $curl;
 	
-	public function __construct(DocuSign_Client $client) {
+	public function __construct(DocuSignClient $client) {
 		$this->client = $client;
 		$this->curl = $client->getCUrl();
 	}

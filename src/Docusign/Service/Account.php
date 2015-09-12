@@ -17,8 +17,8 @@
 
 namespace Docusign\Service;
 
-require_once 'DocuSign_Service.php';
-require_once 'DocuSign_Resource.php';
+use Docusign\DocuSignClient;
+use Docusign\Resource\Account;
 
 class Account extends Service {
 
@@ -27,15 +27,15 @@ class Account extends Service {
 	/**
 	* Constructs the internal representation of the DocuSign Account service.
 	*
-	* @param DocuSign_Client $client
+	* @param DocuSignClient $client
 	*/
-	public function __construct(DocuSign_Client $client) {
+	public function __construct(DocuSignClient $client) {
 		parent::__construct($client);
-		$this->account = new DocuSign_AccountResource($this);
+		$this->account = new Account($this);
 	}
 }
 
-class DocuSign_InitialUser extends DocuSign_Model {
+class InitialUser extends Model {
 	private $email;
 	private $firstName;
 	private $lastName;
@@ -63,7 +63,7 @@ class DocuSign_InitialUser extends DocuSign_Model {
 }
 
 
-class DocuSign_ReferralInformation extends DocuSign_Model {
+class ReferralInformation extends Model {
 	private $referralCode;
 	private $referrerName;
 

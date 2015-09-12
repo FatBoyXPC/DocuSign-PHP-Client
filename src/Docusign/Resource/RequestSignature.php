@@ -2,9 +2,11 @@
 
 namespace Docusign\Resource;
 
+use Docusign\Service\Service;
+
 class RequestSignature extends Resource {
 
-    public function __construct(DocuSign_Service $service) {
+    public function __construct(Service $service) {
         parent::__construct($service);
     }
 

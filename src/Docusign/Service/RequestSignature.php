@@ -17,8 +17,8 @@
 
 namespace Docusign\Service;
 
-require_once 'DocuSign_Service.php';
-require_once 'DocuSign_Resource.php';
+use Docusign\DocuSignClient;
+use Docusign\Resource\RequestSignature;
 
 class RequestSignature extends Service {
 
@@ -29,8 +29,8 @@ class RequestSignature extends Service {
 	*
 	* @param DocuSign_Client $client
 	*/
-	public function __construct(DocuSign_Client $client) {
+	public function __construct(DocuSignClient $client) {
 		parent::__construct($client);
-		$this->signature = new DocuSign_RequestSignatureResource($this);
+		$this->signature = new RequestSignature($this);
 	}
 }

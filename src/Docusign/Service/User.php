@@ -17,8 +17,8 @@
 
 namespace Docusign\Service;
 
-require_once 'DocuSign_Service.php';
-require_once 'DocuSign_Resource.php';
+use DocuSign\DocuSignClient;
+use Docusign\Resource\User;
 
 class User extends Service {
 
@@ -27,10 +27,10 @@ class User extends Service {
   /**
   * Constructs the internal representation of the DocuSign User service.
   *
-  * @param DocuSign_Client $client
+  * @param DocuSignClient $client
   */
-  public function __construct(DocuSign_Client $client) {
+  public function __construct(DocuSignClient $client) {
     parent::__construct($client);
-    $this->user = new DocuSign_UserResource($this);
+    $this->user = new User($this);
   }
 }

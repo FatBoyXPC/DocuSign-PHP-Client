@@ -17,8 +17,8 @@
 
 namespace Docusign\Service;
 
-require_once 'DocuSign_Service.php';
-require_once 'DocuSign_Resource.php';
+use Docusign\DocuSignClient;
+use Docusign\Resource\Status;
 
 class Status extends Service {
 
@@ -27,10 +27,10 @@ class Status extends Service {
 	/**
 	* Constructs the internal representation of the DocuSign Status service.
 	*
-	* @param DocuSign_Client $client
+	* @param DocuSignClient $client
 	*/
-	public function __construct(DocuSign_Client $client) {
+	public function __construct(DocuSignClient $client) {
 		parent::__construct($client);
-		$this->status = new DocuSign_StatusResource($this);
+		$this->status = new Status($this);
 	}
 }

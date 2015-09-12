@@ -17,8 +17,8 @@
 
 namespace Docusign\Service;
 
-require_once 'DocuSign_Service.php';
-require_once 'DocuSign_Resource.php';
+use Docusign\DocuSignClient;
+use Docusign\Resource\Login;
 
 class Login extends Service {
 
@@ -27,10 +27,10 @@ class Login extends Service {
 	/**
 	* Constructs the internal representation of the DocuSign Login service.
 	*
-	* @param DocuSign_Client $client
+	* @param DocuSignClient $client
 	*/
-	public function __construct(DocuSign_Client $client) {
+	public function __construct(DocuSignClient $client) {
 		parent::__construct($client);
-		$this->login = new DocuSign_LoginResource($this);
+		$this->login = new Login($this);
 	}
 }

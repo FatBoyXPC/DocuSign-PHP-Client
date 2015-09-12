@@ -17,8 +17,8 @@
 
 namespace Docusign\Service;
 
-require_once 'DocuSign_Service.php';
-require_once 'DocuSign_Resource.php';
+use Docusign\DocuSignClient;
+use Docusign\Resource\Envelope;
 
 class Envelope extends Service {
 
@@ -27,10 +27,10 @@ class Envelope extends Service {
 	/**
 	* Constructs the internal representation of the DocuSign Envelope service.
 	*
-	* @param DocuSign_Client $client
+	* @param DocuSignClient $client
 	*/
-	public function __construct(DocuSign_Client $client) {
+	public function __construct(DocuSignClient $client) {
 		parent::__construct($client);
-		$this->envelope = new DocuSign_EnvelopeResource($this);
+		$this->envelope = new Envelope($this);
 	}
 }

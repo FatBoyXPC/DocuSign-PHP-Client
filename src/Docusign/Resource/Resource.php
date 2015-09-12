@@ -17,13 +17,15 @@
 
 namespace Docusign\Resource;
 
+use Docusign\Service\Service;
+
 abstract class Resource { 
 
 	protected $service;
 	protected $client;
 	protected $curl;
 
-	public function __construct(DocuSign_Service $service) {
+	public function __construct(Service $service) {
 		$this->service = $service;
 		$this->client = $service->getClient();
 		$this->curl = $service->getCUrl();

@@ -17,8 +17,8 @@
 
 namespace Docusign\Service;
 
-require_once 'DocuSign_Service.php';
-require_once 'DocuSign_Resource.php';
+use DocuSign\DocuSignClient;
+use Docusign\Resource\Views;
 
 class Views extends Service {
 
@@ -27,10 +27,10 @@ class Views extends Service {
 	/**
 	* Constructs the internal representation of the DocuSign View service.
 	*
-	* @param DocuSign_Client $client
+	* @param DocuSignClient $client
 	*/
-	public function __construct(DocuSign_Client $client) {
+	public function __construct(DocuSignClient $client) {
 		parent::__construct($client);
-		$this->views = new DocuSign_ViewsResource($this);
+		$this->views = new Views($this);
 	}
 }

@@ -17,6 +17,11 @@
 
 namespace Docusign;
 
+use Exception;
+use Docusign\Exception\IoException;
+use Docusign\Io\Creds;
+use Docusign\Io\CurlIo;
+
 if (! function_exists('json_decode')) {
   throw new Exception('DocuSign PHP API Client requires the JSON PHP extension');
 }
@@ -36,13 +41,7 @@ if (! ini_get('date.timezone') && function_exists('date_default_timezone_set')) 
 // hack around with the include paths a bit so the library 'just works'
 set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 
-require_once 'config.php';
-require_once 'io/DocuSign_Creds.php';
-require_once 'io/DocuSign_CurlIO.php';
-require_once 'service/DocuSign_Model.php';
-require_once 'service/DocuSign_Resource.php';
-
-class DocuSign_Client {
+class DocuSignClient {
 
     // The DocuSign Credentials
     public $creds;
@@ -72,26 +71,26 @@ class DocuSign_Client {
 	public function __construct($config = NULL) {
 		if(isset($config)) {
 			// Use specific config settings
-			$this->creds = new DocuSign_Creds($config['integrator_key'], $config['email'], $config['password']);
+			$this->creds = new Creds($config['integrator_key'], $config['email'], $config['password']);
 			if(isset($config['version'])) $this->version = $config['version'];
 			if(isset($config['environment'])) $this->environment = $config['environment'];
 			if(!empty($config['account_id'])) $this->accountID = $config['account_id'];
 		} else {
 			// Use config settings in the config.php
 			global $apiConfig;
-			$this->creds = new DocuSign_Creds($apiConfig['integrator_key'], $apiConfig['email'], $apiConfig['password']);
+			$this->creds = new Creds($apiConfig['integrator_key'], $apiConfig['email'], $apiConfig['password']);
 			$this->version = $apiConfig['version'];
 			$this->environment = $apiConfig['environment'];
 			if(!empty($apiConfig['account_id'])) $this->accountID = $apiConfig['account_id'];
 		}
-		$this->curl = new DocuSign_CurlIO();
+		$this->curl = new CurlIo();
 		if(!$this->creds->isEmpty())
 			self::authenticate();
 		else {
 			// you can potentially make this a warning instead of error if you'd like, depends on
 			// how you want to handle missing api credentials...
 			$this->hasError = true;
-			$this->errorMessage = "One or more missing config settings found.  Please check config.php, or pass in required credentials to DocuSign_Client class constructor.";
+			$this->errorMessage = "One or more missing config settings found.  Please check config.php, or pass in required credentials to DocuSignClient class constructor.";
 		}
 	}
 	
@@ -99,7 +98,7 @@ class DocuSign_Client {
 		$url = 'https://' . $this->environment . '.docusign.net/restapi/' . $this->version . '/login_information';
 		try {
 		 	$response = $this->curl->makeRequest($url, 'GET', $this->getHeaders());
-		} catch (DocuSign_IOException $e) {
+		} catch (IoException $e) {
 			$this->hasError = true;
 			$this->errorMessage = $e->getMessage();
 			return;
