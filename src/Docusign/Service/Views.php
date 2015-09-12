@@ -20,39 +20,17 @@ namespace Docusign\Service;
 require_once 'DocuSign_Service.php';
 require_once 'DocuSign_Resource.php';
 
-class DocuSign_StatusService extends DocuSign_Service {
+class Views extends Service {
 
-	public $status;
+	public $views;
 
 	/**
-	* Constructs the internal representation of the DocuSign Status service.
+	* Constructs the internal representation of the DocuSign View service.
 	*
 	* @param DocuSign_Client $client
 	*/
 	public function __construct(DocuSign_Client $client) {
 		parent::__construct($client);
-		$this->status = new DocuSign_StatusResource($this);
+		$this->views = new DocuSign_ViewsResource($this);
 	}
 }
-
-class DocuSign_StatusResource extends DocuSign_Resource {
-
-	public function __construct(DocuSign_Service $service) {
-		parent::__construct($service);
-	}
-
-
-	public function getStatus($fromDate, $status) {
-		$date = date("m", $fromDate) . "/" . date("d", $fromDate) . "/". date("Y", $fromDate) . " " . date("H", $fromDate) . ":" . date("i", $fromDate);
-		$url = $this->client->getBaseURL() . '/envelopes';
-		$params = array (
-			"from_date" => $date,
-			"from_to_status" => $status
-		);
-
-		return $this->curl->makeRequest($url, 'GET', $this->client->getHeaders(), $params);
-	}
-
-}
-
-?>
