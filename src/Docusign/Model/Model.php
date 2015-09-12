@@ -15,9 +15,9 @@
  * limitations under the License.
  */
 
-namespace Docusign;
+namespace Docusign\Model;
 
 //Base class for DocuSign Model
-class DocuSign_Model { }
+class Model { }
 
 ?>
