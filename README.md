@@ -29,7 +29,7 @@ Do a search for the string "TODO" to locate places that require specific info to
 System Requirements
 -------------------------
 
-- PHP 5.2.x or higher [http://www.php.net/]
+- PHP 5.3.x or higher [http://www.php.net/]
 - PHP Curl extension [http://www.php.net/manual/en/intro.curl.php]
 - PHP JSON extension [http://php.net/manual/en/book.json.php]
 
