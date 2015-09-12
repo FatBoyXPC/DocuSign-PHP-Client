@@ -38,9 +38,6 @@ if (! ini_get('date.timezone') && function_exists('date_default_timezone_set')) 
   date_default_timezone_set('UTC');
 }
 
-// hack around with the include paths a bit so the library 'just works'
-set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
-
 class DocuSignClient {
 
     // The DocuSign Credentials
