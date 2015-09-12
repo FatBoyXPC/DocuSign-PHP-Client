@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-abstract class DocuSign_IO {
+namespace Docusign\Io;
+
+abstract class Io {
 
 	abstract function makeRequest($url, $method = 'GET', $headers = array(), $params = array(), $data = NULL);
 
 }
-
-?>

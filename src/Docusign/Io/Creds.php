@@ -15,7 +15,9 @@
  * limitations under the License.
  */
 
-class DocuSign_Creds {
+namespace Docusign\Io;
+
+class Creds {
 	
 	// The DocuSign Integrator's Key
 	private $integratorKey;
@@ -45,5 +47,3 @@ class DocuSign_Creds {
 		return false;
 	}
 }
-
-?>

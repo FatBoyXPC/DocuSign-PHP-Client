@@ -15,9 +15,11 @@
  * limitations under the License.
  */
 
+namespace Docusign\Io;
+
 require_once 'DocuSign_IO.php';
 
-class DocuSign_CurlIO extends DocuSign_IO {
+class CurlIo extends Io {
 
 	public function makeRequest($url, $method = 'GET', $headers = array(), $params = array(), $data = NULL) {
 		$response;
@@ -77,4 +79,3 @@ class DocuSign_CurlIO extends DocuSign_IO {
 
 }
 
-?>
