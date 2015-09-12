@@ -18,7 +18,7 @@
 namespace Docusign\Service;
 
 use Docusign\DocuSignClient;
-use Docusign\Resource\RequestSignature;
+use Docusign\Resource\RequestSignature as RequestSignatureResource;
 
 class RequestSignature extends Service {
 
@@ -31,6 +31,6 @@ class RequestSignature extends Service {
 	*/
 	public function __construct(DocuSignClient $client) {
 		parent::__construct($client);
-		$this->signature = new RequestSignature($this);
+		$this->signature = new RequestSignatureResource($this);
 	}
 }

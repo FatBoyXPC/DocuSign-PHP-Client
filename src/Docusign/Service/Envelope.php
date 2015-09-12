@@ -18,7 +18,7 @@
 namespace Docusign\Service;
 
 use Docusign\DocuSignClient;
-use Docusign\Resource\Envelope;
+use Docusign\Resource\Envelope as EnvelopeResource;
 
 class Envelope extends Service {
 
@@ -31,6 +31,6 @@ class Envelope extends Service {
 	*/
 	public function __construct(DocuSignClient $client) {
 		parent::__construct($client);
-		$this->envelope = new Envelope($this);
+		$this->envelope = new EnvelopeResource($this);
 	}
 }

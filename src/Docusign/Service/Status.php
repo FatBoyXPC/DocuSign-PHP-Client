@@ -18,7 +18,7 @@
 namespace Docusign\Service;
 
 use Docusign\DocuSignClient;
-use Docusign\Resource\Status;
+use Docusign\Resource\Status as StatusResource;
 
 class Status extends Service {
 
@@ -31,6 +31,6 @@ class Status extends Service {
 	*/
 	public function __construct(DocuSignClient $client) {
 		parent::__construct($client);
-		$this->status = new Status($this);
+		$this->status = new StatusResource($this);
 	}
 }

@@ -18,7 +18,7 @@
 namespace Docusign\Service;
 
 use Docusign\DocuSignClient;
-use Docusign\Resource\Account;
+use Docusign\Resource\Account as AccountResource;
 
 class Account extends Service {
 
@@ -31,6 +31,6 @@ class Account extends Service {
 	*/
 	public function __construct(DocuSignClient $client) {
 		parent::__construct($client);
-		$this->account = new Account($this);
+		$this->account = new AccountResource($this);
 	}
 }

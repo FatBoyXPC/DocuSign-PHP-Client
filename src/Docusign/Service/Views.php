@@ -18,7 +18,7 @@
 namespace Docusign\Service;
 
 use DocuSign\DocuSignClient;
-use Docusign\Resource\Views;
+use Docusign\Resource\Views as ViewsResource;
 
 class Views extends Service {
 
@@ -31,6 +31,6 @@ class Views extends Service {
 	*/
 	public function __construct(DocuSignClient $client) {
 		parent::__construct($client);
-		$this->views = new Views($this);
+		$this->views = new ViewsResource($this);
 	}
 }

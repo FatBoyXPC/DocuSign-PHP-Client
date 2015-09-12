@@ -18,7 +18,7 @@
 namespace Docusign\Service;
 
 use Docusign\DocuSignClient;
-use Docusign\Resource\Login;
+use Docusign\Resource\Login as LoginResource;
 
 class Login extends Service {
 
@@ -31,6 +31,6 @@ class Login extends Service {
 	*/
 	public function __construct(DocuSignClient $client) {
 		parent::__construct($client);
-		$this->login = new Login($this);
+		$this->login = new LoginResource($this);
 	}
 }
